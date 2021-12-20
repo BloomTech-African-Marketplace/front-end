@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-
 import { useHistory } from 'react-router-dom';
 
 const initialFormValues = { 
     username: '',
     password: ''
 }
-function Login({refreshLoggedIn}) {
+function Login() {
     const { push } = useHistory()
     const [formValues, setFormValues] = useState(initialFormValues)
 
@@ -17,11 +16,10 @@ function Login({refreshLoggedIn}) {
     }
     const onSubmit = evt => {
         evt.preventDefault()
-        axios.post(`${url}/api/auth/login`, formValues)
+        axios.post(`https://bwproject.herokuapp.com/api/auth/login`, formValues)
         .then((res)=> {
             console.log(res)
-            refreshLoggedIn()
-            push('/landing')
+           
         }).catch(()=>{
             alert('invalid credentials. try again')
         })

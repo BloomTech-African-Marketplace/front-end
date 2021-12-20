@@ -9,7 +9,7 @@ const initialFormValues = {
      email: ''
 }
 
-function Register(refreshLoggedIn){
+function Register(){
     const [formValues, setFormValues] = useState(initialFormValues)
     const { push } = useHistory()
     const onChange = evt => {
@@ -19,11 +19,11 @@ function Register(refreshLoggedIn){
     const onSubmit = evt => {
         evt.preventDefault();
         axios
-        .post(`${url}/api/auth/register`, formValues)
+        .post(`https://bwproject.herokuapp.com/api/auth/register`, formValues)
         .then((res)=> {
             console.log(res.data)
-            refreshLoggedIn()
-            push('/landing')
+           
+            
             
         })  
         .catch((err)=> {
