@@ -1,20 +1,33 @@
-import React from 'react'
-import { Route, Switch } from 'react-router-dom'
+import React from 'react';
+import { Route, Switch, Redirect } from 'react-router-dom';
+
 import Register from './components/Register';
 import Login from './components/Login';
+import Logout from './components/Logout';
+import PrivateRoute from './components/PrivateRoute';
 import Header from './components/Header';
-function App() {
+
+const App = () => {
   return (
-    <Switch>
-      <Route path='/register'>
-        <button id='register-button'>Register</button>
-        <Register />
-      </Route>
-      <Route path='/login'>
-      <button id='login-button'>Login</button>
-       <Login/>
-      </Route>
-    </Switch>
+    <div>
+      <Header/>
+      <Switch>
+        <Route exact path='/'>
+          <Login/>
+        </Route>
+
+        <Route exact path='/login'>
+          <Redirect to="/"/>
+        </Route>
+
+        <Route path='/register'>
+          <Register/>
+        </Route>
+
+        <PrivateRoute exact path='/logout' component={Logout}/>
+      </Switch>
+    </div>
+    
   )
 }
 
