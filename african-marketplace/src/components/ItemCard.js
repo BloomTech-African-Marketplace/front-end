@@ -11,9 +11,9 @@ export default function ItemCard({ details }) {
 
     return (
         <div className='card-container'>
-            <h2> {/* Name of the item */}</h2>
-            <img {/* Photo of the item */}/>
-            <p> {/* Description of the item */}</p>
+            <h2> Name </h2>
+            
+            <p> Description</p>
         </div>
 
     )};
