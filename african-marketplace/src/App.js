@@ -2,6 +2,7 @@ import React from 'react'
 import { Route, Switch } from 'react-router-dom'
 import Register from './components/Register';
 import Login from './components/Login';
+import Header from './components/Header';
 function App() {
   return (
     <Switch>
