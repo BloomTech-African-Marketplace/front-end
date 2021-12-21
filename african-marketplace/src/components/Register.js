@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import axios from 'axios';
 import {useHistory} from 'react-router-dom';
 import url from './URL';
 import axiosWithAuth from '../utils/axiosWithAuth';
@@ -7,7 +6,8 @@ import axiosWithAuth from '../utils/axiosWithAuth';
 const initialFormValues = {
     username: '',
     password: '',
-    email: ''
+    email: '',
+    error: false
 }
 
 const Register = () => {
@@ -26,16 +26,13 @@ const Register = () => {
         axiosWithAuth().post(`${url}api/auth/register`, formValues)
             .then(res => {
                 localStorage.setItem('token', res.data.token);
-                // console.log(res);
                 push('/login');
             })
             .catch(err => {
-                console.error(err);
-                // below to be confirmed upon completion of backend api
-                // setFormValues({
-                //   ...formValues,
-                //   error: err.response.data.error
-                // });
+                setFormValues({
+                  ...formValues,
+                  error: err.response.data.message
+                });
             })
     }
 
@@ -69,6 +66,7 @@ const Register = () => {
                 />
             </label>
             <button>Register</button>
+            <p>{formValues.error}</p>
         </form>
     )
 }

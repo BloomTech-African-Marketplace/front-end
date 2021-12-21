@@ -29,12 +29,10 @@ const Login = () => {
             push('/');
           })
           .catch(err => {
-            console.error(err);
-            // below to be confirmed upon completion of backend api
-            // setFormValues({
-            //   ...formValues,
-            //   error: err.response.data.error
-            // });
+            setFormValues({
+              ...formValues,
+              error: err.response.data.message
+            });
           })
       }
 
@@ -59,6 +57,7 @@ const Login = () => {
                 />
             </label>
             <button>Log In</button>
+            <p>{formValues.error}</p>
         </form>
     )
 }
