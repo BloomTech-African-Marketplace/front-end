@@ -90,7 +90,7 @@ export default function AddItem(props) {
                 onChange={onChange}
                 placeholder='enter item description'
             />
-            <button className='submit-btn'>submit</button>
+            <button className='submit-btn'>add item</button>
             <button className='cancel-btn' onClick={onCancel}>cancel</button>
 
             {
@@ -105,5 +105,8 @@ export default function AddItem(props) {
     )};
     
     // END OF ADD ITEM FUNCTION
+
+    // TO DO LIST
     // const isDisabled needs to be added
+    // errors need to be handled
 

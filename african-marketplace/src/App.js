@@ -5,10 +5,13 @@ import Login from './components/Login';
 import Header from './components/Header';
 
 import AddItem from './components/AddItem';
+import Dashboard from './components/Dashboard';
+
 function App() {
   return (
 
     <div>
+      <Dashboard />
       <AddItem />
     </div>
   /*
