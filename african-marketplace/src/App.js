@@ -6,6 +6,8 @@ import Login from './components/Login';
 import Logout from './components/Logout';
 import PrivateRoute from './components/PrivateRoute';
 import Header from './components/Header';
+import Dashboard from './components/Dashboard';
+import LandingPage from './components/LandingPage';
 
 
 const App = () => {
@@ -13,17 +15,20 @@ const App = () => {
     <div>
       <Header/>
       <Switch>
+
         <Route exact path='/'>
-          <Login/>
+          <LandingPage/>
         </Route>
 
         <Route exact path='/login'>
-          <Redirect to="/"/>
+          <Login/>
         </Route>
 
         <Route path='/register'>
           <Register/>
         </Route>
+        
+        <PrivateRoute exact path='/dashboard' component={Dashboard}/>
 
         <PrivateRoute exact path='/logout' component={Logout}/>
       </Switch>
