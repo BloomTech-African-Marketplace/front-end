@@ -82,15 +82,13 @@ function LandingPage(){
     }, [formValues])
 
     return (
-        <Switch>
-            <Route exact path='/landing'>
+            <div>
                 <div>
                     {item.map((items)=> {
-                        return <ItemCard key={items.id} details={items.id}/>
+                        return <ItemCard key={items.id} details={items}/>
                     })}
                 </div>
-            </Route>
-        </Switch>
+            </div>
     )
 
 
