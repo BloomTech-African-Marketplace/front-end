@@ -3,8 +3,10 @@ import { Route, Switch } from 'react-router-dom'
 import Register from './components/Register';
 import Login from './components/Login';
 import Header from './components/Header';
+
 function App() {
   return (
+  
     <Switch>
       <Route path='/register'>
         <button id='register-button'>Register</button>
@@ -14,7 +16,7 @@ function App() {
       <button id='login-button'>Login</button>
        <Login/>
       </Route>
-    </Switch>
+  </Switch> 
   )
 }
 
