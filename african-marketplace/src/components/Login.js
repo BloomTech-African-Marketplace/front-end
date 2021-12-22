@@ -5,12 +5,15 @@ import url from './URL';
 
 const initialFormValues = { 
     username: '',
-    password: '',
-    error: false
+    password: ''
+}
+const errorValues ={
+    error:'',
 }
 const Login = () => {
     const { push } = useHistory();
     const [formValues, setFormValues] = useState(initialFormValues);
+    const [error, setError] = useState(errorValues);
 
     const handleChange = (e) => {
         setFormValues({
@@ -29,10 +32,8 @@ const Login = () => {
             push('/');
           })
           .catch(err => {
-            setFormValues({
-              ...formValues,
-              error: err.response.data.message
-            });
+            setError({
+              error: err.response.data.message          });
           })
       }
 
@@ -57,7 +58,7 @@ const Login = () => {
                 />
             </label>
             <button>Log In</button>
-            <p>{formValues.error}</p>
+            <p>{error.error}</p>
         </form>
     )
 }
