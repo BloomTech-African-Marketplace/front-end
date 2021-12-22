@@ -4,17 +4,9 @@ import Register from './components/Register';
 import Login from './components/Login';
 import Header from './components/Header';
 
-import AddItem from './components/AddItem';
-import Dashboard from './components/Dashboard';
-
 function App() {
   return (
-
-    <div>
-      <Dashboard key='item_description'/>
-      <AddItem key='item_id' />
-    </div>
-  /*
+  
     <Switch>
       <Route path='/register'>
         <button id='register-button'>Register</button>
@@ -24,7 +16,7 @@ function App() {
       <button id='login-button'>Login</button>
        <Login/>
       </Route>
-  </Switch> */
+  </Switch> 
   )
 }
 

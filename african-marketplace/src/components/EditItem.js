@@ -38,5 +38,13 @@ export default function EditItem(props) {
     }
 
     return(
-
+        <div className='edit-container'>
+            <h3>Edit Item</h3>
+        </div>
     )};
+
+    // END OF EDIT ITEM FUNCTION
+
+    // TO DO LIST
+    // Build out the edit jsx
+    // Make sure it works lol
