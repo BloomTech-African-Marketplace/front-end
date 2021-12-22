@@ -29,8 +29,7 @@ const Register = () => {
             })
             .catch(err => {
                 setFormValues({
-                  ...formValues,
-                  error: err.response.data.message
+                  ...formValues
                 });
             })
     }
@@ -65,7 +64,7 @@ const Register = () => {
                 />
             </label>
             <button>Register</button>
-            <p>{formValues.error}</p>
+            {/* <p>{formValues.error}</p> */}
         </form>
     )
 }

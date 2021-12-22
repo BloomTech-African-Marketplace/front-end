@@ -5,8 +5,7 @@ import url from './URL';
 
 const initialFormValues = { 
     username: '',
-    password: '',
-    error: false
+    password: ''
 }
 const Login = () => {
     const { push } = useHistory();
@@ -30,9 +29,7 @@ const Login = () => {
           })
           .catch(err => {
             setFormValues({
-              ...formValues,
-              error: err.response.data.message
-            });
+              ...formValues            });
           })
       }
 
@@ -57,7 +54,7 @@ const Login = () => {
                 />
             </label>
             <button>Log In</button>
-            <p>{formValues.error}</p>
+            {/* <p>{error}</p> */}
         </form>
     )
 }
