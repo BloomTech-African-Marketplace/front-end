@@ -3,6 +3,7 @@
 // should I put all of my axios helpers here? Or in the components they're used in?
 
 import React from 'react';
+import EditItem from './EditItem';
 
 export default function ItemCard({ details }) {
     if (!details) {

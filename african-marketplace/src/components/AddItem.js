@@ -1,19 +1,19 @@
 // needs a form that posts
 
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React, { useState } from 'react';
+import axiosWithAuth from '../utils/axiosWithAuth';
 import ItemCard from './ItemCard';
 
 const initialFormValues = {
-    name: '', 
-    photo: '',
-    description: '',
+    item_name: '', 
+    item_image: '',
+    item_description: '',
 };
 
 const initialFormErrors = {
-    name: '',
-    photo:'', 
-    description: '',
+    item_name: '',
+    item_photo:'', 
+    item_description: '',
 };
 
 const initialItems = [];
@@ -31,12 +31,13 @@ export default function AddItem(props) {
     // HELPERS
 
     const postNewItem = newItem => {
-
+        console.log(newItem);
         // post the new item
-        axios.post('https://bwproject.herokuapp.com/api/items', newItem)
+        axiosWithAuth.post('https://bwproject.herokuapp.com/api/items', newItem)
             .then(res => {
                 // make sure that it is res.data pretty please
-                setItems([res, ...items])
+                console.log(res);
+                setItems(res.data)
             }).catch(err => console.error(err))
             .finally(() => setFormValues(initialFormValues))
     }
@@ -51,12 +52,14 @@ export default function AddItem(props) {
 
     // submit function
     const onSubmit = () => {
+        //console.log('hello from onSubmit');
         const newItem = {
-            name:formValues.name.trim(),
-            photo:formValues.photo.trim(),
-            description:formValues.description.trim(),
+            item_name:formValues.item_name.trim(),
+            item_image:formValues.item_image.trim(),
+            item_description:formValues.item_description.trim(),
         }
         postNewItem(newItem);
+    
     }
 
     // change function
@@ -70,27 +73,27 @@ export default function AddItem(props) {
         <form onSubmit={onSubmit}>
             <h3> Add Item </h3>
             <input 
-                name='name'
+                name='item_name'
                 type='text'
-                value={props.item_name}
+                value={formValues.item_name}
                 onChange={onChange}
                 placeholder='enter item name'
             />
             <input
-                name='photo'
+                name='item_image'
                 type=''
-                value={props.item_image}
+                value={formValues.item_image}
                 onChange={onChange}
                 placeholder='enter item photo url here'
             />
             <input 
-                name='description'
+                name='item_description'
                 type='text'
-                value={props.item_description}
+                value={formValues.item_description}
                 onChange={onChange}
                 placeholder='enter item description'
             />
-            <button className='submit-btn'>add item</button>
+            <button className='submit-btn' onClick={onSubmit}>add item</button>
             <button className='cancel-btn' onClick={onCancel}>cancel</button>
 
             {
@@ -109,4 +112,5 @@ export default function AddItem(props) {
     // TO DO LIST
     // const isDisabled needs to be added
     // errors need to be handled
+    // do you need useEffect?
 
