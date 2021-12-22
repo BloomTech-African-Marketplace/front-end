@@ -11,8 +11,8 @@ function App() {
   return (
 
     <div>
-      <Dashboard />
-      <AddItem />
+      <Dashboard key='item_description'/>
+      <AddItem key='item_id' />
     </div>
   /*
     <Switch>

@@ -23,9 +23,11 @@ export default function Dashboard(props) {
     }, []);
 
     return (
-        <div className='items-list-wrapper'> HEllo
+        <div className='items-list-wrapper'> 
+             <h1>Dashboard</h1>
+
             {items.map(item => (
-                <ItemCard key={props.item_id} details={item} />
+                <ItemCard key={props.item_name} details={item} />
             ))}
         </div>
 
