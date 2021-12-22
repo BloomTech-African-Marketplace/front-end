@@ -6,8 +6,7 @@ import axiosWithAuth from '../utils/axiosWithAuth';
 const initialFormValues = {
     username: '',
     password: '',
-    email: '',
-    error: false
+    email: ''
 }
 
 const Register = () => {
