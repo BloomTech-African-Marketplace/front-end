@@ -1,59 +1,112 @@
 // needs a form that posts
 
-import React { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import ItemCard from './ItemCard';
 
-initialFormState = {
+const initialFormValues = {
     name: '', 
     photo: '',
     description: '',
-}
+};
 
-export default function AddItem() {
+const initialFormErrors = {
+    name: '',
+    photo:'', 
+    description: '',
+};
 
+const initialItems = [];
+const initialDisabled = true;
+
+export default function AddItem(props) {
+
+    // STATES
+
+    const [items, setItems] = useState(initialItems);
+    const [formValues, setFormValues] = useState(initialFormValues);
+    const [formErrors, setFormErrors] = useState(initialFormErrors);
+    const [disabled, setDisabled] = useState(initialDisabled);
+
+    // HELPERS
+
+    const postNewItem = newItem => {
+
+        // post the new item
+        axios.post('https://bwproject.herokuapp.com/api/items', newItem)
+            .then(res => {
+                // make sure that it is res.data pretty please
+                setItems([res, ...items])
+            }).catch(err => console.error(err))
+            .finally(() => setFormValues(initialFormValues))
+    }
+
+    // EVENT HANDLERS
 
     // cancel function
     const onCancel = evt => {
         evt.preventDefault()
-        reset()
+        
     }
 
     // submit function
-    const onSubmit = evt => {
-        evt.preventDefault()
-        submit()
+    const onSubmit = () => {
+        const newItem = {
+            name:formValues.name.trim(),
+            photo:formValues.photo.trim(),
+            description:formValues.description.trim(),
+        }
+        postNewItem(newItem);
     }
 
     // change function
-    const onChange = evt => {
-        const { name, value } = evt.target;
-        change(name, value)
+    const onChange = (name, value) => {
+        setFormValues({
+            ...formValues,
+            [name]: value
+        })
     }
-
-    // const isDisabled needs to be added
-
     return (
         <form onSubmit={onSubmit}>
             <h3> Add Item </h3>
             <input 
                 name='name'
                 type='text'
-                value={values.name}
+                value={props.item_name}
                 onChange={onChange}
                 placeholder='enter item name'
             />
             <input
-                name='image'
-                type='' {/* CHECK THE DOCS FOR ADDING IMAGES */}
+                name='photo'
+                type=''
+                value={props.item_image}
+                onChange={onChange}
+                placeholder='enter item photo url here'
             />
             <input 
                 name='description'
                 type='text'
-                value={values.description}
+                value={props.item_description}
                 onChange={onChange}
                 placeholder='enter item description'
             />
-            <button className='submit-btn'>submit</button>
+            <button className='submit-btn'>add item</button>
             <button className='cancel-btn' onClick={onCancel}>cancel</button>
-        </form>
 
+            {
+            items.map(item => {
+                return (
+                    <ItemCard key={item.item_id} details={item} />
+                )
+            })
+             }
+        </form>
+        
     )};
+    
+    // END OF ADD ITEM FUNCTION
+
+    // TO DO LIST
+    // const isDisabled needs to be added
+    // errors need to be handled
+

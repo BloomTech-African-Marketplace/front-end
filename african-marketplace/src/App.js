@@ -7,6 +7,7 @@ import Logout from './components/Logout';
 import PrivateRoute from './components/PrivateRoute';
 import Header from './components/Header';
 
+
 const App = () => {
   return (
     <div>
@@ -27,7 +28,6 @@ const App = () => {
         <PrivateRoute exact path='/logout' component={Logout}/>
       </Switch>
     </div>
-    
   )
 }
 
