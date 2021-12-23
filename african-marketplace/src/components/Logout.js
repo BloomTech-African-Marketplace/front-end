@@ -13,7 +13,7 @@ const Logout = () => {
     } else {
       push('/login');
     } 
-  }, [])
+  })
   
 
   return (

@@ -1,6 +1,14 @@
 import React from 'react';
 import axiosWithAuth from '../utils/axiosWithAuth';
 
+// const initialFormValues = {
+//     item_name: '', 
+//     item_image: '',
+//     item_description: '',
+// };
+
+// const initialItems = [];
+
 export default function DeleteItem(props) {
 
     const deleteItem = () => {

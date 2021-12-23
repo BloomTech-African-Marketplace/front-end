@@ -8,12 +8,24 @@ const initialFormValues = {
     item_description: '',
 };
 
+// const initialFormErrors = {
+//     item_name: '',
+//     item_photo:'', 
+//     item_description: '',
+// };
+
 const initialItems = [];
+// const initialDisabled = true;
 
 export default function AddItem(props) {
 
     const [items, setItems] = useState(initialItems);
     const [formValues, setFormValues] = useState(initialFormValues);
+    // const [formErrors, setFormErrors] = useState(initialFormErrors);
+    // const [disabled, setDisabled] = useState(initialDisabled);
+    
+
+    // HELPERS
 
     const postNewItem = newItem => {
       
