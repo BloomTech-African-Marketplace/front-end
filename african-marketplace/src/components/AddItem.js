@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import axiosWithAuth from '../utils/axiosWithAuth';
-import AuthItemCard from './AuthItemCard';
+
 
 const initialFormValues = {
     item_name: '', 
@@ -10,14 +10,14 @@ const initialFormValues = {
     item_description: '',
 };
 
-const initialFormErrors = {
-    item_name: '',
-    item_photo:'', 
-    item_description: '',
-};
+// const initialFormErrors = {
+//     item_name: '',
+//     item_photo:'', 
+//     item_description: '',
+// };
 
 const initialItems = [];
-const initialDisabled = true;
+// const initialDisabled = true;
 
 export default function AddItem(props) {
 
@@ -25,8 +25,8 @@ export default function AddItem(props) {
 
     const [items, setItems] = useState(initialItems);
     const [formValues, setFormValues] = useState(initialFormValues);
-    const [formErrors, setFormErrors] = useState(initialFormErrors);
-    const [disabled, setDisabled] = useState(initialDisabled);
+    // const [formErrors, setFormErrors] = useState(initialFormErrors);
+    // const [disabled, setDisabled] = useState(initialDisabled);
     
 
     // HELPERS
