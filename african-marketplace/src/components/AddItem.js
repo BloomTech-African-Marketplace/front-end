@@ -49,7 +49,6 @@ export default function AddItem(props) {
             setItems(res.data)
         }).catch(err => console.error(err))
         .finally(() => setFormValues(initialFormValues))
-
     }, [])
       
 
@@ -65,13 +64,11 @@ export default function AddItem(props) {
     // submit function
     const onSubmit = (e) => {
         e.preventDefault();
-        console.log('hello from onSubmit');
         const newItem = {
             item_name:formValues.item_name.trim(),
             item_image:formValues.item_image.trim(),
             item_description:formValues.item_description.trim(),
         }
-        console.log('hello from onSubmit newItem', newItem)
         postNewItem(newItem);
     
     }
@@ -90,35 +87,27 @@ export default function AddItem(props) {
                 <input 
                     name='item_name'
                     type='text'
-                    value={props.item_name}
+                    value={formValues.item_name}
                     onChange={onChange}
                     placeholder='enter item name'
                 />
                 <input
                     name='item_image'
                     type=''
-                    value={props.item_image}
+                    value={formValues.item_image}
                     onChange={onChange}
                     placeholder='enter item photo url here'
                 />
                 <input 
                     name='item_description'
                     type='text'
-                    value={props.item_description}
+                    value={formValues.item_description}
                     onChange={onChange}
                     placeholder='enter item description'
                 />
                 <button className='submit-btn' onClick={onSubmit}>add item</button>
                 <button className='cancel-btn' onClick={onCancel}>cancel</button>
             </form>
-            
-                {
-                items.map(item => {
-                    return (
-                        <AuthItemCard key={item.item_id} details={item} />
-                    )
-                })
-                }
         </div>
         
     )};

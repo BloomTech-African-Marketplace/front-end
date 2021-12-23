@@ -9,14 +9,7 @@ const initialFormValues = {
 
 const initialItems = [];
 
-export default function AddItem(props) {
-
-    // STATES
-
-    const [items, setItems] = useState(initialItems);
-    const [formValues, setFormValues] = useState(initialFormValues);
-    
-
+export default function DeleteItem(props) {
     // HELPERS
 
     const deleteItem = () => {
@@ -25,7 +18,7 @@ export default function AddItem(props) {
         axiosWithAuth().delete(`https://bwproject.herokuapp.com/api/items/${props.details.item_id}`)
             .then(res => {
                 console.log('hello from res', res)              
-            }).catch(err => console.error(err))
+            }).catch(err => console.error('log from error', err.response.data.message))
     }
       
     // EVENT HANDLERS
