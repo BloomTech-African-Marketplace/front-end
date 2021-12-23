@@ -98,7 +98,7 @@ button {
 .add-form {
     background-color:white;
     color:rgb(54, 54, 61);
-    width:80%;
+    width:70%;
     border-radius:5px;
     margin: 1%;
     text-align: center;
@@ -122,5 +122,5 @@ button {
 
 input {
     margin: 2%;
-    font-size: 30px;
+    font-size: 20px;
 }
