@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axiosWithAuth from '../utils/axiosWithAuth';
-import AuthItemCard from './AuthItemCard';
+
 
 
 const initialItems = [];

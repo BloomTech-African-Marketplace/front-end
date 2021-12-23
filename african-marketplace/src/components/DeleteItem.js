@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
+import React from 'react';
 import axiosWithAuth from '../utils/axiosWithAuth';
 
-const initialFormValues = {
-    item_name: '', 
-    item_image: '',
-    item_description: '',
-};
+// const initialFormValues = {
+//     item_name: '', 
+//     item_image: '',
+//     item_description: '',
+// };
 
-const initialItems = [];
+// const initialItems = [];
 
 export default function DeleteItem(props) {
     // HELPERS
