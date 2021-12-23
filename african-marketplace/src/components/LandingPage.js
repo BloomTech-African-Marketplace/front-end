@@ -84,7 +84,7 @@ function LandingPage(){
 
     return (
             <div>
-                <div>
+                <div className='item-cards'>
                     {item.map((items)=> {
                         return <ItemCard key={items.item_id} details={items}/>
                     })}

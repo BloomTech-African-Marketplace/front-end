@@ -1,0 +1,50 @@
+body {
+    font-family: 'Montserrat', sans-serif;}
+
+.nav {
+    width:100%;
+    display:flex;
+    flex-flow: row wrap;
+    justify-content:left;
+}
+
+.link {
+    color:white;
+    background-color:rgb(122, 122, 129);
+    text-decoration: none;
+    padding:1%;
+    border-radius: 5px;
+    margin: 1%;
+}
+
+h1 {
+    color:white;
+    width:100%;
+    background: url('https://images.unsplash.com/photo-1452948491233-ad8a1ed01085?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTN8fG1hcmtldCUyMHZlZ2V0YWJsZXN8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60');
+    background-image: cover;
+    background-position: 0%;
+    background-repeat: no-repeat;
+    padding: 4%;
+
+}
+
+.item-cards{
+    color:rgb(122, 122, 129);
+    width: 70%;
+    display: flex;
+    flex-flow: column wrap;
+    text-align: center;
+   
+    align-items: center;
+}
+
+.card-container {
+    display:flex;
+    flex-flow: column;
+    justify-content:center;
+    width: 70%;
+}
+
+img {
+    border-radius: 5px;
+}
