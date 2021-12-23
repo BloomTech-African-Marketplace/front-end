@@ -5,7 +5,7 @@ import AuthItemCard from './AuthItemCard';
 
 const initialItems = [];
 
-export default function AddItem(props) {
+export default function EditItem(props) {
 
 
     const initialFormValues = {

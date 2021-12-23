@@ -9,15 +9,7 @@ const initialFormValues = {
 
 const initialItems = [];
 
-export default function AddItem(props) {
-
-    // STATES
-
-    const [items, setItems] = useState(initialItems);
-    const [formValues, setFormValues] = useState(initialFormValues);
-    
-
-    // HELPERS
+export default function DeleteItem(props) {
 
     const deleteItem = () => {
        // console.log('hello from postNewItem', newItem);
@@ -27,14 +19,13 @@ export default function AddItem(props) {
                 console.log('hello from res', res)              
             }).catch(err => console.error(err))
     }
-      
-    // EVENT HANDLERS
 
-    // submit function
     const onSubmit = (e) => {
         e.preventDefault();
         deleteItem();
     }
+    
+
     
     return (
         <div>
