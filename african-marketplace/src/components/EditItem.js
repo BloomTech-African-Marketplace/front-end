@@ -1,50 +1,100 @@
-import React from 'react';
-import axios from 'axios';
+import React, { useState } from 'react';
+import axiosWithAuth from '../utils/axiosWithAuth';
+import AuthItemCard from './AuthItemCard';
 
-const initialFormValues = {
-    name: '', 
-    photo: '',
-    description: '',
-};
-
-const initialFormErrors = {
-    name: '',
-    photo:'', 
-    description: '',
-};
 
 const initialItems = [];
-const initialDisabled = true;
 
-const itemURL = 'https://bwproject.herokuapp.com/api/items'
+export default function AddItem(props) {
 
-export default function EditItem(props) {
+
+    const initialFormValues = {
+        item_name: props.details.item_name, 
+        item_image: props.details.image_name,
+        item_description: props.details.item_description,
+    };
+
+    // STATES
 
     const [items, setItems] = useState(initialItems);
     const [formValues, setFormValues] = useState(initialFormValues);
     
-    const putItems = ({ name, photo, description }) => {
-        axios.put(`${itemsURL}/${items_id}`, {name, photo, description})
-            .then(res => setItems(items.map(item => {
-                return item.item_id === id ? res.data : quote
-            })))
-            .catch(err => console.error(err))
+
+    // HELPERS
+
+    const editNewItem = item => {
+
+        axiosWithAuth().put(`https://bwproject.herokuapp.com/api/items/${props.details.item_id}`, item)
+            .then(res => {
+                setItems([res.data, ...items])
+            }).catch(err => console.error(err))
             .finally(() => setFormValues(initialFormValues))
-
-    const editItem = (id) => {
-        const item = items.find(it => it.id === id)
-        setFormValues({ ...item })
     }
+      
+    // EVENT HANDLERS
+
+    // cancel function
+    const onCancel = evt => {
+        evt.preventDefault()
+        
     }
 
-    return(
-        <div className='edit-container'>
-            <h3>Edit Item</h3>
-        </div>
+    // submit function
+    const onSubmit = (e) => {
+        e.preventDefault();
+        // const item = {
+        //     item_name:formValues.item_name.trim(),
+        //     item_image:formValues.item_image.trim(),
+        //     item_description:formValues.item_description.trim()
+        // }
+        editNewItem(formValues);
+    
+    }
+
+    // change function
+  
+    const onChange = (e) => {
+        setFormValues({
+            ...formValues,
+            [e.target.name]:e.target.value
+        });
+    }
+
+    return (
+        <form onSubmit={onSubmit}>
+            <h3> Edit Item </h3>
+            <input 
+                name='item_name'
+                type='text'
+                value={props.item_name}
+                onChange={onChange}
+                placeholder='enter item name'
+            />
+            <input
+                name='item_image'
+                type=''
+                value={props.item_image}
+                onChange={onChange}
+                placeholder='enter item photo url here'
+            />
+            <input 
+                name='item_description'
+                type='text'
+                value={props.item_description}
+                onChange={onChange}
+                placeholder='enter item description'
+            />
+            <button className='submit-btn' onClick={onSubmit}>edit item</button>
+            <button className='cancel-btn' onClick={onCancel}>cancel</button>
+        </form>
+        
     )};
-
-    // END OF EDIT ITEM FUNCTION
+    
+    // END OF ADD ITEM FUNCTION
 
     // TO DO LIST
-    // Build out the edit jsx
-    // Make sure it works lol
+    // const isDisabled needs to be added
+    // errors need to be handled
+    // delete in editItemCard
+    // do you need useEffect?
+
