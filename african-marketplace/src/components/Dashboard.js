@@ -18,24 +18,21 @@ export default function Dashboard(props) {
             }).catch(err => console.error(err));
     }
 
-
     useEffect(() => {
         getItems()
     },[items]);
 
     return (
         <div className='items-list-wrapper'> 
-             <h1>Dashboard</h1>
+             <h2>Dashboard</h2>
              <AddItem /> 
-            {items.map(item => (
-                <AuthItemCard key={item.item_id} details={item} />
-               
-            ))}
-          
+                <div className='item-cards'>
+                    {items.map(item => (
+                        <AuthItemCard key={item.item_id} details={item} />
+                    
+                    ))}
+                </div>
         </div>
 
     )};
     // END OF DASHBOARD FUNCTION
-
-    // TO DO LIST
-    // Make sure pictures work

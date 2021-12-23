@@ -5,7 +5,7 @@ import axiosWithAuth from '../utils/axiosWithAuth';
 
 const initialItems = [];
 
-export default function AddItem(props) {
+export default function EditItem(props) {
 
 
     const initialFormValues = {
@@ -14,14 +14,9 @@ export default function AddItem(props) {
         item_description: props.details.item_description,
     };
 
-    // STATES
-
     const [items, setItems] = useState(initialItems);
     const [formValues, setFormValues] = useState(initialFormValues);
     
-
-    // HELPERS
-
     const editNewItem = item => {
 
         axiosWithAuth().put(`https://bwproject.herokuapp.com/api/items/${props.details.item_id}`, item)
@@ -30,28 +25,13 @@ export default function AddItem(props) {
             }).catch(err => console.error(err))
             .finally(() => setFormValues(initialFormValues))
     }
-      
-    // EVENT HANDLERS
-
-    // cancel function
-    const onCancel = evt => {
-        evt.preventDefault()
-        
-    }
-
-    // submit function
+ 
     const onSubmit = (e) => {
         e.preventDefault();
-        // const item = {
-        //     item_name:formValues.item_name.trim(),
-        //     item_image:formValues.item_image.trim(),
-        //     item_description:formValues.item_description.trim()
-        // }
+        
         editNewItem(formValues);
     
     }
-
-    // change function
   
     const onChange = (e) => {
         setFormValues({
@@ -85,16 +65,9 @@ export default function AddItem(props) {
                 placeholder='enter item description'
             />
             <button className='submit-btn' onClick={onSubmit}>edit item</button>
-            <button className='cancel-btn' onClick={onCancel}>cancel</button>
         </form>
         
     )};
     
     // END OF ADD ITEM FUNCTION
-
-    // TO DO LIST
-    // const isDisabled needs to be added
-    // errors need to be handled
-    // delete in editItemCard
-    // do you need useEffect?
 

@@ -1,8 +1,6 @@
-// needs a form that posts
 
 import React, { useState, useEffect } from 'react';
 import axiosWithAuth from '../utils/axiosWithAuth';
-
 
 const initialFormValues = {
     item_name: '', 
@@ -21,8 +19,6 @@ const initialItems = [];
 
 export default function AddItem(props) {
 
-    // STATES
-
     const [items, setItems] = useState(initialItems);
     const [formValues, setFormValues] = useState(initialFormValues);
     // const [formErrors, setFormErrors] = useState(initialFormErrors);
@@ -32,11 +28,9 @@ export default function AddItem(props) {
     // HELPERS
 
     const postNewItem = newItem => {
-       // console.log('hello from postNewItem', newItem);
-        // post the new item
+      
         axiosWithAuth().post('https://bwproject.herokuapp.com/api/items', newItem)
             .then(res => {
-                // make sure that it is res.data pretty please
                 console.log('hello from res', res);
                 setItems([res.data, ...items])
             }).catch(err => console.error(err))
@@ -51,17 +45,6 @@ export default function AddItem(props) {
         .finally(() => setFormValues(initialFormValues))
     }, [])
       
-
-
-    // EVENT HANDLERS
-
-    // cancel function
-    const onCancel = evt => {
-        evt.preventDefault()
-        
-    }
-
-    // submit function
     const onSubmit = (e) => {
         e.preventDefault();
         const newItem = {
@@ -73,7 +56,6 @@ export default function AddItem(props) {
     
     }
 
-    // change function
     const onChange = (e) => {
         setFormValues({
             ...formValues,
@@ -106,17 +88,10 @@ export default function AddItem(props) {
                     placeholder='enter item description'
                 />
                 <button className='submit-btn' onClick={onSubmit}>add item</button>
-                <button className='cancel-btn' onClick={onCancel}>cancel</button>
             </form>
         </div>
         
     )};
     
     // END OF ADD ITEM FUNCTION
-
-    // TO DO LIST
-    // const isDisabled needs to be added
-    // errors need to be handled
-    // delete in editItemCard
-    // do you need useEffect?
 

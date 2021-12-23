@@ -10,20 +10,15 @@ import axiosWithAuth from '../utils/axiosWithAuth';
 // const initialItems = [];
 
 export default function DeleteItem(props) {
-    // HELPERS
 
     const deleteItem = () => {
-       // console.log('hello from postNewItem', newItem);
-        // post the new item
+       
         axiosWithAuth().delete(`https://bwproject.herokuapp.com/api/items/${props.details.item_id}`)
             .then(res => {
                 console.log('hello from res', res)              
             }).catch(err => console.error('log from error', err.response.data.message))
     }
-      
-    // EVENT HANDLERS
 
-    // submit function
     const onSubmit = (e) => {
         e.preventDefault();
         deleteItem();

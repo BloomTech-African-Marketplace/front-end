@@ -9,6 +9,8 @@ import Header from './components/Header';
 import Dashboard from './components/Dashboard';
 import LandingPage from './components/LandingPage';
 
+import './App.css';
+
 
 const App = () => {
   return (
