@@ -1,8 +1,8 @@
 // needs a form that posts
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axiosWithAuth from '../utils/axiosWithAuth';
-import ItemCard from './ItemCard';
+import AuthItemCard from './AuthItemCard';
 
 const initialFormValues = {
     item_name: '', 
@@ -27,20 +27,32 @@ export default function AddItem(props) {
     const [formValues, setFormValues] = useState(initialFormValues);
     const [formErrors, setFormErrors] = useState(initialFormErrors);
     const [disabled, setDisabled] = useState(initialDisabled);
+    
 
     // HELPERS
 
     const postNewItem = newItem => {
-        console.log(newItem);
+       // console.log('hello from postNewItem', newItem);
         // post the new item
-        axiosWithAuth.post('https://bwproject.herokuapp.com/api/items', newItem)
+        axiosWithAuth().post('https://bwproject.herokuapp.com/api/items', newItem)
             .then(res => {
                 // make sure that it is res.data pretty please
-                console.log(res);
-                setItems(res.data)
+                console.log('hello from res', res);
+                setItems([res.data, ...items])
             }).catch(err => console.error(err))
             .finally(() => setFormValues(initialFormValues))
     }
+
+    useEffect(() => {
+        axiosWithAuth().get('https://bwproject.herokuapp.com/api/auth/items')
+        .then(res => {
+            setItems(res.data)
+        }).catch(err => console.error(err))
+        .finally(() => setFormValues(initialFormValues))
+
+    }, [])
+      
+
 
     // EVENT HANDLERS
 
@@ -51,23 +63,32 @@ export default function AddItem(props) {
     }
 
     // submit function
-    const onSubmit = () => {
-        //console.log('hello from onSubmit');
+    const onSubmit = (e) => {
+        e.preventDefault();
+        console.log('hello from onSubmit');
         const newItem = {
             item_name:formValues.item_name.trim(),
             item_image:formValues.item_image.trim(),
             item_description:formValues.item_description.trim(),
         }
+        console.log('hello from onSubmit newItem', newItem)
         postNewItem(newItem);
     
     }
 
     // change function
-    const onChange = (name, value) => {
+    /*const onChange = (name, value) => {
         setFormValues({
             ...formValues,
             [name]: value
         })
+    }*/
+
+    const onChange = (e) => {
+        setFormValues({
+            ...formValues,
+            [e.target.name]:e.target.value
+        });
     }
     return (
         <form onSubmit={onSubmit}>
@@ -75,21 +96,21 @@ export default function AddItem(props) {
             <input 
                 name='item_name'
                 type='text'
-                value={formValues.item_name}
+                value={props.item_name}
                 onChange={onChange}
                 placeholder='enter item name'
             />
             <input
                 name='item_image'
                 type=''
-                value={formValues.item_image}
+                value={props.item_image}
                 onChange={onChange}
                 placeholder='enter item photo url here'
             />
             <input 
                 name='item_description'
                 type='text'
-                value={formValues.item_description}
+                value={props.item_description}
                 onChange={onChange}
                 placeholder='enter item description'
             />
@@ -99,7 +120,7 @@ export default function AddItem(props) {
             {
             items.map(item => {
                 return (
-                    <ItemCard key={item.item_id} details={item} />
+                    <AuthItemCard key={item.item_id} details={item} />
                 )
             })
              }
@@ -112,5 +133,6 @@ export default function AddItem(props) {
     // TO DO LIST
     // const isDisabled needs to be added
     // errors need to be handled
+    // delete in editItemCard
     // do you need useEffect?
 

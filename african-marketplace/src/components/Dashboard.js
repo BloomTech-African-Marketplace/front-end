@@ -1,9 +1,8 @@
 // needs to axios.get data from the api
 
 import React, {useState, useEffect} from 'react';
-import ItemCard from './ItemCard';
+import AuthItemCard from './AuthItemCard';
 import axiosWithAuth from '../utils/axiosWithAuth';
-import EditItem from './EditItem';
 import AddItem from './AddItem';
 
 const initialItems= [];
@@ -27,12 +26,12 @@ export default function Dashboard(props) {
     return (
         <div className='items-list-wrapper'> 
              <h1>Dashboard</h1>
-
+             <AddItem /> 
             {items.map(item => (
-                <ItemCard key={props.item_name} details={item} />
+                <AuthItemCard key={props.item_name} details={item} />
                
             ))}
-        <AddItem />    
+          
         </div>
 
     )};
