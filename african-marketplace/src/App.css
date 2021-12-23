@@ -15,6 +15,8 @@ body {
     padding:1%;
     border-radius: 5px;
     margin: 1%;
+    width:10%;
+    text-align: center;
 }
 
 h1 {
@@ -29,22 +31,27 @@ h1 {
 }
 
 .item-cards{
+    background-color: rgb(156, 148, 131);
     color:rgb(122, 122, 129);
-    width: 70%;
     display: flex;
     flex-flow: column wrap;
     text-align: center;
-   
+    padding: 3%;
+    width:70%;
     align-items: center;
+
 }
 
 .card-container {
+    background-color: white;
     display:flex;
     flex-flow: column;
     justify-content:center;
-    width: 70%;
+    width: 60%;
+    margin: 3%;
+    border-radius: 5px;
 }
 
 img {
-    border-radius: 5px;
+    
 }
