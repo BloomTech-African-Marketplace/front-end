@@ -124,3 +124,18 @@ input {
     margin: 2%;
     font-size: 20px;
 }
+
+@media (max-width:800px){
+
+    .item-cards{
+    
+        color:rgb(122, 122, 129);
+        display: flex;
+        flex-flow: column wrap;
+        align-items:baseline;
+        text-align: center;
+        padding: 3%;
+        width:100%;
+        opacity: 0.9;
+    }
+}
