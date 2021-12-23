@@ -8,10 +8,14 @@ const initialFormValues = {
     password: '',
     email: ''
 }
+const initialError ={
+    error:''
+}
 
 const Register = () => {
     const { push } = useHistory();
     const [formValues, setFormValues] = useState(initialFormValues);
+    const [error, setError] = useState(initialError);
 
     const handleChange = (e) => {
         setFormValues({
@@ -28,8 +32,7 @@ const Register = () => {
                 push('/login');
             })
             .catch(err => {
-                setFormValues({
-                  ...formValues,
+                setError({
                   error: err.response.data.message
                 });
             })
@@ -65,7 +68,7 @@ const Register = () => {
                 />
             </label>
             <button>Register</button>
-            <p>{formValues.error}</p>
+            <p>{error.error}</p>
         </form>
     )
 }

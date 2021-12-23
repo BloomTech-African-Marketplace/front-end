@@ -37,6 +37,10 @@ function LandingPage(){
             console.error(err)
         })
     }
+    useEffect(()=> {
+        getItems()
+    }, [])
+
     const postItems = (newItem) => {
         axios.post('https://bwproject.herokuapp.com/api/items', newItem)
         .then(res => {
@@ -72,9 +76,6 @@ function LandingPage(){
         }
         postItems(newItem)
     }
-    useEffect(()=> {
-        getItems()
-    }, [])
 
     useEffect(()=> {
         formSchema.isValid(formValues)
@@ -85,7 +86,7 @@ function LandingPage(){
             <div>
                 <div>
                     {item.map((items)=> {
-                        return <ItemCard key={items.id} details={items}/>
+                        return <ItemCard key={items.item_id} details={items}/>
                     })}
                 </div>
             </div>

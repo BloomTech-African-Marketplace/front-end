@@ -8,7 +8,7 @@ import AddItem from './AddItem';
 const initialItems= [];
 
 export default function Dashboard(props) {
-
+   
     const [items, setItems] = useState(initialItems);
 
     const getItems = () => {
@@ -18,17 +18,16 @@ export default function Dashboard(props) {
             }).catch(err => console.error(err));
     }
 
-
     useEffect(() => {
         getItems()
-    }, []);
+    },[items]);
 
     return (
         <div className='items-list-wrapper'> 
              <h1>Dashboard</h1>
              <AddItem /> 
             {items.map(item => (
-                <AuthItemCard key={props.item_name} details={item} />
+                <AuthItemCard key={item.item_id} details={item} />
                
             ))}
           
@@ -36,6 +35,3 @@ export default function Dashboard(props) {
 
     )};
     // END OF DASHBOARD FUNCTION
-
-    // TO DO LIST
-    // Make sure pictures work
