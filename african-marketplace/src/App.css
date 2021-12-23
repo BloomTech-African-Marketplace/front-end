@@ -14,6 +14,7 @@ body {
     width:100%;
     display:flex;
     flex-flow: row wrap;
+    justify-content:left;
     
 }
 
@@ -41,11 +42,11 @@ h1 {
     background-repeat: no-repeat;
     color:rgb(122, 122, 129);
     display: flex;
-    flex-flow: column wrap;
+    flex-flow: row wrap;
+    align-items:baseline;
     text-align: center;
     padding: 3%;
     width:100%;
-    align-items: center;
     opacity: 0.9;
 }
 
@@ -54,12 +55,14 @@ h1 {
     display:flex;
     flex-flow: column;
     justify-content:center;
-    width: 70%;
+    width: 25%;
     margin: 2%;
     padding:1%;
     border-radius: 5px;
 }
 
 img {
-    
+
+    height:300px;
+    width:auto;
 }
