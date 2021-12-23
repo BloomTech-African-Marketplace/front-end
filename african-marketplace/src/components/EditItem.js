@@ -1,48 +1,36 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import axiosWithAuth from '../utils/axiosWithAuth';
-import ItemCard from './ItemCard';
+import AuthItemCard from './AuthItemCard';
 
-const initialFormValues = {
-    item_name: '', 
-    item_image: '',
-    item_description: '',
-};
-
-const initialFormErrors = {
-    item_name: '',
-    item_photo:'', 
-    item_description: '',
-};
 
 const initialItems = [];
-const initialDisabled = true;
 
 export default function AddItem(props) {
+
+
+    const initialFormValues = {
+        item_name: props.details.item_name, 
+        item_image: props.details.image_name,
+        item_description: props.details.item_description,
+    };
 
     // STATES
 
     const [items, setItems] = useState(initialItems);
     const [formValues, setFormValues] = useState(initialFormValues);
-    const [formErrors, setFormErrors] = useState(initialFormErrors);
-    const [disabled, setDisabled] = useState(initialDisabled);
     
 
     // HELPERS
 
-    const postNewItem = newItem => {
-       // console.log('hello from postNewItem', newItem);
-        // post the new item
-        axiosWithAuth().put('https://bwproject.herokuapp.com/api/items/:id', newItem)
+    const editNewItem = item => {
+
+        axiosWithAuth().put(`https://bwproject.herokuapp.com/api/items/${props.details.item_id}`, item)
             .then(res => {
-                // make sure that it is res.data pretty please
-                console.log('hello from res', res);
                 setItems([res.data, ...items])
             }).catch(err => console.error(err))
             .finally(() => setFormValues(initialFormValues))
     }
       
-
-
     // EVENT HANDLERS
 
     // cancel function
@@ -54,31 +42,24 @@ export default function AddItem(props) {
     // submit function
     const onSubmit = (e) => {
         e.preventDefault();
-        console.log('hello from onSubmit');
-        const newItem = {
-            item_name:formValues.item_name.trim(),
-            item_image:formValues.item_image.trim(),
-            item_description:formValues.item_description.trim(),
-        }
-        console.log('hello from onSubmit newItem', newItem)
-        postNewItem(newItem);
+        // const item = {
+        //     item_name:formValues.item_name.trim(),
+        //     item_image:formValues.item_image.trim(),
+        //     item_description:formValues.item_description.trim()
+        // }
+        editNewItem(formValues);
     
     }
 
     // change function
-    /*const onChange = (name, value) => {
-        setFormValues({
-            ...formValues,
-            [name]: value
-        })
-    }*/
-
+  
     const onChange = (e) => {
         setFormValues({
             ...formValues,
             [e.target.name]:e.target.value
         });
     }
+
     return (
         <form onSubmit={onSubmit}>
             <h3> Edit Item </h3>
@@ -105,14 +86,6 @@ export default function AddItem(props) {
             />
             <button className='submit-btn' onClick={onSubmit}>edit item</button>
             <button className='cancel-btn' onClick={onCancel}>cancel</button>
-
-            {
-            items.map(item => {
-                return (
-                    <ItemCard key={item.item_id} details={item} />
-                )
-            })
-             }
         </form>
         
     )};

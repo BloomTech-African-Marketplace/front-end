@@ -77,13 +77,6 @@ export default function AddItem(props) {
     }
 
     // change function
-    /*const onChange = (name, value) => {
-        setFormValues({
-            ...formValues,
-            [name]: value
-        })
-    }*/
-
     const onChange = (e) => {
         setFormValues({
             ...formValues,
@@ -91,40 +84,42 @@ export default function AddItem(props) {
         });
     }
     return (
-        <form onSubmit={onSubmit}>
-            <h3> Add Item </h3>
-            <input 
-                name='item_name'
-                type='text'
-                value={props.item_name}
-                onChange={onChange}
-                placeholder='enter item name'
-            />
-            <input
-                name='item_image'
-                type=''
-                value={props.item_image}
-                onChange={onChange}
-                placeholder='enter item photo url here'
-            />
-            <input 
-                name='item_description'
-                type='text'
-                value={props.item_description}
-                onChange={onChange}
-                placeholder='enter item description'
-            />
-            <button className='submit-btn' onClick={onSubmit}>add item</button>
-            <button className='cancel-btn' onClick={onCancel}>cancel</button>
-
-            {
-            items.map(item => {
-                return (
-                    <AuthItemCard key={item.item_id} details={item} />
-                )
-            })
-             }
-        </form>
+        <div>
+            <form onSubmit={onSubmit}>
+                <h3> Add Item </h3>
+                <input 
+                    name='item_name'
+                    type='text'
+                    value={props.item_name}
+                    onChange={onChange}
+                    placeholder='enter item name'
+                />
+                <input
+                    name='item_image'
+                    type=''
+                    value={props.item_image}
+                    onChange={onChange}
+                    placeholder='enter item photo url here'
+                />
+                <input 
+                    name='item_description'
+                    type='text'
+                    value={props.item_description}
+                    onChange={onChange}
+                    placeholder='enter item description'
+                />
+                <button className='submit-btn' onClick={onSubmit}>add item</button>
+                <button className='cancel-btn' onClick={onCancel}>cancel</button>
+            </form>
+            
+                {
+                items.map(item => {
+                    return (
+                        <AuthItemCard key={item.item_id} details={item} />
+                    )
+                })
+                }
+        </div>
         
     )};
     
