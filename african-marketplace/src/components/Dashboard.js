@@ -24,7 +24,7 @@ export default function Dashboard(props) {
 
     return (
         <div className='items-list-wrapper'> 
-             <h2>Dashboard</h2>
+             <h2 className='dashboard-h2'>Dashboard</h2>
              <AddItem /> 
                 <div className='item-cards'>
                     {items.map(item => (

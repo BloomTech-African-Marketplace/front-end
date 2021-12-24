@@ -63,8 +63,8 @@ export default function AddItem(props) {
         });
     }
     return (
-        <div>
-            <form onSubmit={onSubmit}>
+        <div className='add-container'>
+            <form className='add-form' onSubmit={onSubmit}>
                 <h3> Add Item </h3>
                 <input 
                     name='item_name'
