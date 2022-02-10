@@ -24,7 +24,7 @@ export default function Dashboard(props) {
 
     return (
         <div className='items-list-wrapper'> 
-             <h2 className='dashboard-h2'>Dashboard</h2>
+        <div className="dash-container">
              <AddItem /> 
                 <div className='item-cards'>
                     {items.map(item => (
@@ -32,6 +32,7 @@ export default function Dashboard(props) {
                     
                     ))}
                 </div>
+        </div>
         </div>
 
     )};

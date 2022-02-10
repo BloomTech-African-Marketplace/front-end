@@ -63,8 +63,7 @@ export default function AddItem(props) {
         });
     }
     return (
-        <div className='add-container'>
-            <form className='add-form' onSubmit={onSubmit}>
+            <form className='register-wrapper' onSubmit={onSubmit}>
                 <h3> Add Item </h3>
                 <input 
                     name='item_name'
@@ -89,7 +88,6 @@ export default function AddItem(props) {
                 />
                 <button className='submit-btn' onClick={onSubmit}>add item</button>
             </form>
-        </div>
         
     )};
     
