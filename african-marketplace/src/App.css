@@ -99,7 +99,44 @@ h2 {
 .dash-container{
     display:flex;
     justify-content:center;
+    flex-direction:column;
     align-items:center;
+    width:100%;
+    border:3px solid black;
+
+}
+.item-cards-dash{
+    border:3px solid black;
+    display: flex;
+    justify-content:space-around;
+    align-items:center;
+    text-align: center;
+    padding: 3%;
+    width:100%;
+    opacity: 0.9;
+    box-sizing: border-box;
+
+}
+.card-container-dash {
+    background-color: rgba(255, 255, 255, 0.404);;
+    display:flex;
+    justify-content:center;
+    width: 500px;
+    margin: 2%;
+    padding:1%;
+    box-sizing: border-box;
+
+}
+.edit-form{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+.card-container-dash img{
+    height:200px;
+    object-fit:cover;
+    object-position:center;
+    box-sizing: border-box;
 }
 
 form {

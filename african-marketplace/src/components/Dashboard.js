@@ -26,7 +26,7 @@ export default function Dashboard(props) {
         <div className='items-list-wrapper'> 
         <div className="dash-container">
              <AddItem /> 
-                <div className='item-cards'>
+                <div className='item-cards-dash'>
                     {items.map(item => (
                         <AuthItemCard key={item.item_id} details={item} />
                     
