@@ -8,6 +8,7 @@ import PrivateRoute from './components/PrivateRoute';
 import Header from './components/Header';
 import Dashboard from './components/Dashboard';
 import LandingPage from './components/LandingPage';
+import Footer from './components/Footer'
 
 import './App.css';
 
@@ -34,6 +35,7 @@ const App = () => {
 
         <PrivateRoute exact path='/logout' component={Logout}/>
       </Switch>
+      <Footer/>
     </div>
   )
 }

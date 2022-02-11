@@ -83,7 +83,7 @@ function LandingPage(){
     // }, [formValues])
 
     return (
-            <div className='items-list-wrapper'>
+            <div className='items-list-wrapper-copy'>
                 <div className='item-cards'>
                     {item.map((items)=> {
                         return <ItemCard key={items.item_id} details={items}/>

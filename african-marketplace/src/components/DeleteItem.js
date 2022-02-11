@@ -26,7 +26,7 @@ export default function DeleteItem(props) {
     
     return (
         <div>
-            <button className='submit-btn' onClick={onSubmit}>delete item</button>
+            <button className='submit-btn' onClick={onSubmit}>delete</button>
         </div>
         
     )};

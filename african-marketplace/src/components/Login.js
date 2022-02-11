@@ -38,7 +38,8 @@ const Login = () => {
       }
 
     return(
-        <form className='register-wrapper' onSubmit={handleSubmit}>
+<form className='items-list-wrapper' onSubmit={handleSubmit}>
+            <div className='register-wrapper'>            
             <label>Username:
                 <input 
                     value={formValues.username}
@@ -59,6 +60,7 @@ const Login = () => {
             </label>
             <button>Log In</button>
             <p>{error.error}</p>
+            </div>
         </form>
     )
 }

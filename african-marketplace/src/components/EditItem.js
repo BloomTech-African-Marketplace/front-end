@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import axiosWithAuth from '../utils/axiosWithAuth';
+import DeleteItem from './DeleteItem';
 
 
 
 const initialItems = [];
 
 export default function EditItem(props) {
+    let details = props.details
 
 
     const initialFormValues = {
@@ -41,7 +43,7 @@ export default function EditItem(props) {
     }
 
     return (
-        <form onSubmit={onSubmit}>
+        <form className = 'edit-form' onSubmit={onSubmit}>
             <h3> Edit Item </h3>
             <input 
                 name='item_name'
@@ -64,7 +66,8 @@ export default function EditItem(props) {
                 onChange={onChange}
                 placeholder='enter item description'
             />
-            <button className='submit-btn' onClick={onSubmit}>edit item</button>
+            <button className='submit-btn' onClick={onSubmit}>edit</button>
+            <DeleteItem details = {details}/>
         </form>
         
     )};

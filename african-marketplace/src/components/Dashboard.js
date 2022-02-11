@@ -24,14 +24,15 @@ export default function Dashboard(props) {
 
     return (
         <div className='items-list-wrapper'> 
-             <h2 className='dashboard-h2'>Dashboard</h2>
+        <div className="dash-container">
              <AddItem /> 
-                <div className='item-cards'>
+                <div className='item-cards-dash'>
                     {items.map(item => (
                         <AuthItemCard key={item.item_id} details={item} />
                     
                     ))}
                 </div>
+        </div>
         </div>
 
     )};
