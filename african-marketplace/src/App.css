@@ -102,11 +102,9 @@ h2 {
     flex-direction:column;
     align-items:center;
     width:100%;
-    border:3px solid black;
 
 }
 .item-cards-dash{
-    border:3px solid black;
     display: flex;
     justify-content:space-around;
     align-items:center;
